@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +16,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return view('pages.blank-page', ['type_menu' => '']);
+    return view('pages.auth.auth-login', ['type_menu' => '']);
 });
 
-Route::get('/auth-login', function () {
-    return view('pages.auth-login', ['type_menu' => 'auth']);
-});
+Route::get('register', function () {
+    return view('pages.auth.auth-register', ['type_menu' => 'auth']);
+})->name('register');
 
-Route::get('/auth-register', function () {
-    return view('pages.auth-register', ['type_menu' => 'auth']);
+Route::get('forgot-password', function () {
+    return view('pages.auth.auth-forgot-password',  ['type_menu' => '']);
+})->name('forgot-password');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('home', function () {
+        return view('pages.app.dashboard-simpadu', ['type_menu' => '']);
+    })->name('home');
+
+    Route::post('logout', function () {
+        Auth::logout();
+        return redirect('/'); // Redirect ke halaman beranda atau halaman lain yang sesuai.
+    })->name('logout');
+
+    Route::get('reset-password', function () {
+        return view('pages.auth.auth-reset-password', ['type_menu' => '']);
+    })->name('reset-password');
 });
