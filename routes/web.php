@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('home', function () {
         return view('pages.app.dashboard-simpadu', ['type_menu' => '']);
     })->name('home');
+    Route::resource('user', UserController::class);
 
     Route::post('logout', function () {
         Auth::logout();

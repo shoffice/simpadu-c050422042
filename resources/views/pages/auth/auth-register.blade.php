@@ -18,12 +18,10 @@
             <form method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="frist_name">Name</label>
-                    <input id="frist_name" type="text"
-                        class="form-control @error('name')
-                        is-invalid
-                    @enderror"
-                        name="frist_name" autofocus>
+                    <label for="name">Name</label>
+                    <input id="name" type="text"
+                        class="form-control @error('name') is-invalid @enderror"
+                        name="name" autofocus>
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -68,7 +66,7 @@
                         class="form-control @error('password2')
                         is-invalid
                     @enderror"
-                        name="password-confirm">
+                        name="password_confirmation">
                     @error('password2')
                     <div class="invalid-feedback">
                         {{$message}}
