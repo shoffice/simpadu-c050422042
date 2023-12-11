@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">SIMPADU-C050422042</a>
+            <a href="{{ route('home')}}">SIMPADU-C050422042</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
@@ -13,7 +13,7 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link"
-                            href="{{ url('dashboard-general-dashboard') }}">General Dashboard</a>
+                            href="{{ route('home')}}">General Dashboard</a>
                     </li>
                 </ul>
             </li>
